@@ -1,0 +1,2095 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>متجر تطبيقات مسلم الشباني - النسخة الكاملة</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2E5BFF;
+            --secondary: #8B3DFF;
+            --accent: #FF6B8B;
+            --dark: #1A1A2E;
+            --light: #F8F9FA;
+            --success: #00C896;
+            --danger: #FF4757;
+            --warning: #FFA500;
+            --info: #00B8D9;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* شريط التنقل */
+        .navbar {
+            background: white;
+            box-shadow: var(--shadow);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: #333;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            transition: var(--transition);
+        }
+
+        .nav-link:hover, .nav-link.active {
+            background: var(--primary);
+            color: white;
+        }
+
+        .user-controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .btn {
+            padding: 8px 20px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-secondary {
+            background: var(--secondary);
+            color: white;
+        }
+
+        .btn-danger {
+            background: var(--danger);
+            color: white;
+        }
+
+        .btn-success {
+            background: var(--success);
+            color: white;
+        }
+
+        .btn-warning {
+            background: var(--warning);
+            color: white;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+            opacity: 0.9;
+        }
+
+        .user-info {
+            background: rgba(46, 91, 255, 0.1);
+            padding: 8px 15px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* قسم البطل */
+        .hero {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 30px;
+        }
+
+        .search-box {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 30px;
+            font-size: 1rem;
+            box-shadow: var(--shadow);
+        }
+
+        /* أقسام التطبيقات */
+        .categories {
+            padding: 40px 0;
+            background: white;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            color: var(--dark);
+            font-size: 2rem;
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .category-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            cursor: pointer;
+            transition: var(--transition);
+            border: 2px solid transparent;
+        }
+
+        .category-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+        }
+
+        .category-card i {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        /* التطبيقات */
+        .apps-section {
+            padding: 40px 0;
+            background: #f8f9fa;
+        }
+
+        .apps-filter {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 10px 25px;
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+        }
+
+        .filter-btn.active, .filter-btn:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .apps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .app-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .app-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+
+        .app-header {
+            height: 180px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .app-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.2);
+        }
+
+        .app-header i {
+            font-size: 4rem;
+            color: white;
+            position: relative;
+            z-index: 1;
+        }
+
+        .app-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: var(--accent);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            z-index: 2;
+        }
+
+        .app-body {
+            padding: 25px;
+        }
+
+        .app-category {
+            display: inline-block;
+            background: rgba(46, 91, 255, 0.1);
+            color: var(--primary);
+            padding: 5px 15px;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+
+        .app-title {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+
+        .app-description {
+            color: #666;
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .app-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .app-rating {
+            color: var(--warning);
+            font-weight: bold;
+        }
+
+        .app-download-btn {
+            width: 100%;
+            padding: 12px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-weight: bold;
+            transition: var(--transition);
+        }
+
+        .app-download-btn:hover {
+            background: var(--secondary);
+            transform: translateY(-2px);
+        }
+
+        /* لوحة التحكم */
+        .admin-panel {
+            display: none;
+            background: white;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            margin: 40px auto;
+            padding: 40px;
+            max-width: 1200px;
+            border-top: 5px solid var(--primary);
+        }
+
+        .admin-panel h2 {
+            color: var(--dark);
+            margin-bottom: 30px;
+            text-align: center;
+            font-size: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .admin-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 10px;
+            overflow-x: auto;
+        }
+
+        .admin-tab {
+            padding: 10px 25px;
+            background: none;
+            border: none;
+            border-bottom: 3px solid transparent;
+            cursor: pointer;
+            font-weight: 500;
+            color: #666;
+            transition: var(--transition);
+            white-space: nowrap;
+        }
+
+        .admin-tab.active {
+            color: var(--primary);
+            border-bottom-color: var(--primary);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* نماذج لوحة التحكم */
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--dark);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(46, 91, 255, 0.1);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        /* خيارات الرفع */
+        .upload-options {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .upload-option {
+            flex: 1;
+            padding: 15px;
+            background: #f8f9fa;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            cursor: pointer;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .upload-option.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        /* رفع الملفات */
+        .file-upload {
+            border: 2px dashed #e0e0e0;
+            border-radius: 10px;
+            padding: 40px;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .file-upload:hover {
+            border-color: var(--primary);
+            background: rgba(46, 91, 255, 0.05);
+        }
+
+        .file-upload i {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        /* جداول البيانات */
+        .table-container {
+            overflow-x: auto;
+            margin-top: 20px;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .data-table th {
+            background: #f8f9fa;
+            padding: 15px;
+            text-align: right;
+            color: var(--dark);
+            font-weight: 500;
+            border-bottom: 2px solid #eee;
+        }
+
+        .data-table td {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+            color: #666;
+        }
+
+        .data-table tr:hover {
+            background: #f8f9fa;
+        }
+
+        /* الحالات */
+        .status-badge {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .status-active {
+            background: rgba(0, 200, 150, 0.1);
+            color: var(--success);
+        }
+
+        .status-inactive {
+            background: rgba(255, 71, 87, 0.1);
+            color: var(--danger);
+        }
+
+        /* أزرار الإجراءات */
+        .action-buttons {
+            display: flex;
+            gap: 8px;
+        }
+
+        .action-btn {
+            width: 35px;
+            height: 35px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .edit-btn {
+            background: rgba(46, 91, 255, 0.1);
+            color: var(--primary);
+        }
+
+        .delete-btn {
+            background: rgba(255, 71, 87, 0.1);
+            color: var(--danger);
+        }
+
+        .action-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        /* النماذج المنبثقة */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 500px;
+            position: relative;
+            animation: modalSlide 0.3s ease;
+        }
+
+        @keyframes modalSlide {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-header {
+            padding: 25px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-header h2 {
+            color: var(--dark);
+            margin: 0;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #666;
+        }
+
+        .modal-body {
+            padding: 25px;
+        }
+
+        /* رسائل التنبيه */
+        .alert {
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        .alert-success {
+            background: rgba(0, 200, 150, 0.1);
+            color: var(--success);
+            border: 1px solid rgba(0, 200, 150, 0.2);
+        }
+
+        .alert-error {
+            background: rgba(255, 71, 87, 0.1);
+            color: var(--danger);
+            border: 1px solid rgba(255, 71, 87, 0.2);
+        }
+
+        /* التذييل */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            opacity: 0.7;
+        }
+
+        /* التجاوب */
+        @media (max-width: 768px) {
+            .nav-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .modal-content {
+                padding: 20px;
+                width: 95%;
+            }
+            
+            .admin-panel {
+                padding: 20px;
+            }
+            
+            .apps-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* الإخفاء */
+        .hidden {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- شريط التنقل -->
+    <nav class="navbar">
+        <div class="container nav-content">
+            <div class="logo">
+                <i class="fas fa-laptop-code"></i>
+                <span>مسلم الشباني</span>
+            </div>
+            
+            <div class="nav-links">
+                <a href="#home" class="nav-link active">الرئيسية</a>
+                <a href="#apps" class="nav-link">التطبيقات</a>
+                <a href="#about" class="nav-link">من نحن</a>
+                
+                <div class="user-controls">
+                    <!-- للمستخدم غير المسجل -->
+                    <button class="btn btn-primary" id="loginBtn">
+                        <i class="fas fa-sign-in-alt"></i>
+                        تسجيل الدخول
+                    </button>
+                    <button class="btn btn-secondary" id="registerBtn">
+                        <i class="fas fa-user-plus"></i>
+                        إنشاء حساب
+                    </button>
+                    
+                    <!-- للمستخدم المسجل -->
+                    <div class="user-info hidden" id="userInfo">
+                        <i class="fas fa-user"></i>
+                        <span id="userName"></span>
+                    </div>
+                    
+                    <!-- للإدمن فقط -->
+                    <button class="btn btn-warning hidden" id="adminBtn">
+                        <i class="fas fa-cog"></i>
+                        لوحة التحكم
+                    </button>
+                    
+                    <button class="btn btn-danger hidden" id="logoutBtn">
+                        <i class="fas fa-sign-out-alt"></i>
+                        خروج
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- قسم البطل -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>مرحباً في متجر تطبيقات مسلم الشباني</h1>
+            <p>اكتشف مجموعة متنوعة من التطبيقات المبتكرة المصممة لتسهيل حياتك اليومية</p>
+            <div class="search-box">
+                <input type="text" placeholder="ابحث عن تطبيق..." id="globalSearch">
+            </div>
+        </div>
+    </section>
+
+    <!-- أقسام التطبيقات -->
+    <section class="categories" id="categories">
+        <div class="container">
+            <h2 class="section-title">أقسام التطبيقات</h2>
+            <div class="categories-grid" id="categoriesContainer">
+                <!-- سيتم تعبئتها بالجافاسكريبت -->
+            </div>
+        </div>
+    </section>
+
+    <!-- التطبيقات -->
+    <section class="apps-section" id="apps">
+        <div class="container">
+            <h2 class="section-title">أحدث التطبيقات</h2>
+            <div class="apps-filter" id="appsFilter">
+                <button class="filter-btn active" data-category="all">جميع التطبيقات</button>
+                <!-- سيتم تعبئتها بالجافاسكريبت -->
+            </div>
+            <div class="apps-grid" id="appsContainer">
+                <!-- سيتم تعبئتها بالجافاسكريبت -->
+            </div>
+        </div>
+    </section>
+
+    <!-- لوحة التحكم (للإدمن فقط) -->
+    <div class="container">
+        <div class="admin-panel" id="adminPanel">
+            <h2><i class="fas fa-tachometer-alt"></i> لوحة تحكم الإدمن</h2>
+            
+            <div class="admin-tabs">
+                <button class="admin-tab active" data-tab="dashboard">لوحة التحكم</button>
+                <button class="admin-tab" data-tab="apps">إدارة التطبيقات</button>
+                <button class="admin-tab" data-tab="categories">إدارة الأقسام</button>
+                <button class="admin-tab" data-tab="upload">رفع تطبيق جديد</button>
+                <button class="admin-tab" data-tab="users">إدارة المستخدمين</button>
+                <button class="admin-tab" data-tab="settings">الإعدادات</button>
+            </div>
+            
+            <!-- لوحة التحكم -->
+            <div class="tab-content active" id="dashboardTab">
+                <div class="form-row">
+                    <div class="form-group">
+                        <h3>إحصائيات سريعة</h3>
+                        <div style="background: #f8f9fa; padding: 20px; border-radius: 10px;">
+                            <p><strong>عدد التطبيقات:</strong> <span id="adminTotalApps">0</span></p>
+                            <p><strong>إجمالي التحميلات:</strong> <span id="adminTotalDownloads">0</span></p>
+                            <p><strong>عدد المستخدمين:</strong> <span id="adminTotalUsers">0</span></p>
+                            <p><strong>متوسط التقييم:</strong> <span id="adminAvgRating">0</span></p>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <h3>أحدث التطبيقات</h3>
+                        <div id="adminRecentApps" style="background: #f8f9fa; padding: 20px; border-radius: 10px; min-height: 200px;">
+                            <!-- سيتم تعبئتها بالجافاسكريبت -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- إدارة التطبيقات -->
+            <div class="tab-content" id="appsTab">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                    <h3>إدارة جميع التطبيقات</h3>
+                    <div style="display: flex; gap: 10px;">
+                        <input type="text" id="adminAppSearch" placeholder="بحث عن تطبيق..." style="padding: 8px 15px; border: 2px solid #e0e0e0; border-radius: 10px; width: 200px;">
+                        <button class="btn btn-primary" id="refreshApps">
+                            <i class="fas fa-sync-alt"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>اسم التطبيق</th>
+                                <th>القسم</th>
+                                <th>الإصدار</th>
+                                <th>التحميلات</th>
+                                <th>الحالة</th>
+                                <th>الإجراءات</th>
+                            </tr>
+                        </thead>
+                        <tbody id="adminAppsTable">
+                            <!-- سيتم تعبئتها بالجافاسكريبت -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <!-- إدارة الأقسام -->
+            <div class="tab-content" id="categoriesTab">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                    <h3>إدارة أقسام التطبيقات</h3>
+                    <button class="btn btn-success" id="addCategoryBtn">
+                        <i class="fas fa-plus"></i>
+                        إضافة قسم جديد
+                    </button>
+                </div>
+                
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>اسم القسم</th>
+                                <th>الأيقونة</th>
+                                <th>عدد التطبيقات</th>
+                                <th>الإجراءات</th>
+                            </tr>
+                        </thead>
+                        <tbody id="adminCategoriesTable">
+                            <!-- سيتم تعبئتها بالجافاسكريبت -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <!-- رفع تطبيق جديد -->
+            <div class="tab-content" id="uploadTab">
+                <h3>رفع تطبيق جديد</h3>
+                
+                <form id="uploadAppForm">
+                    <div class="form-group">
+                        <label>طريقة الرفع</label>
+                        <div class="upload-options">
+                            <div class="upload-option active" data-type="link">
+                                <i class="fas fa-link"></i>
+                                <p>رابط مباشر</p>
+                            </div>
+                            <div class="upload-option" data-type="file">
+                                <i class="fas fa-upload"></i>
+                                <p>رفع ملف</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group" id="linkSection">
+                        <label>رابط التحميل</label>
+                        <input type="url" id="appLink" placeholder="https://example.com/app.apk" required>
+                    </div>
+                    
+                    <div class="form-group hidden" id="fileSection">
+                        <label>رفع ملف التطبيق</label>
+                        <div class="file-upload" id="fileDropZone">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <p>اسحب وأسقط ملف APK هنا أو انقر للاختيار</p>
+                            <input type="file" id="appFile" accept=".apk,.ipa" style="display: none;">
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>اسم التطبيق</label>
+                            <input type="text" id="appName" required>
+                        </div>
+                        <div class="form-group">
+                            <label>القسم</label>
+                            <select id="appCategory" required>
+                                <option value="">اختر القسم</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>وصف التطبيق</label>
+                        <textarea id="appDescription" rows="3" required></textarea>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>الإصدار</label>
+                            <input type="text" id="appVersion" required>
+                        </div>
+                        <div class="form-group">
+                            <label>الحجم</label>
+                            <input type="text" id="appSize" placeholder="مثال: 45 ميجابايت" required>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-success" style="width: 100%; padding: 15px; margin-top: 20px;">
+                        <i class="fas fa-upload"></i>
+                        رفع التطبيق
+                    </button>
+                    
+                    <div class="alert alert-success" id="uploadSuccess" style="margin-top: 20px;">
+                        تم رفع التطبيق بنجاح!
+                    </div>
+                </form>
+            </div>
+            
+            <!-- إدارة المستخدمين -->
+            <div class="tab-content" id="usersTab">
+                <h3>إدارة المستخدمين</h3>
+                
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>اسم المستخدم</th>
+                                <th>البريد الإلكتروني</th>
+                                <th>نوع الحساب</th>
+                                <th>تاريخ التسجيل</th>
+                                <th>الحالة</th>
+                                <th>الإجراءات</th>
+                            </tr>
+                        </thead>
+                        <tbody id="adminUsersTable">
+                            <!-- سيتم تعبئتها بالجافاسكريبت -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <!-- الإعدادات -->
+            <div class="tab-content" id="settingsTab">
+                <h3>إعدادات النظام</h3>
+                
+                <form id="systemSettingsForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>اسم الموقع</label>
+                            <input type="text" id="siteName" value="متجر تطبيقات مسلم الشباني">
+                        </div>
+                        <div class="form-group">
+                            <label>بريد التواصل</label>
+                            <input type="email" id="contactEmail" value="info@example.com">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>وصف الموقع</label>
+                        <textarea id="siteDescription" rows="2">أفضل تطبيقات الجوال المبتكرة</textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label style="display: flex; align-items: center; gap: 10px;">
+                            <input type="checkbox" id="allowRegistrations" checked>
+                            <span>السماح بتسجيل المستخدمين الجدد</span>
+                        </label>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label style="display: flex; align-items: center; gap: 10px;">
+                            <input type="checkbox" id="enableReviews" checked>
+                            <span>تفعيل التقييمات</span>
+                        </label>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary" style="width: 100%; padding: 15px; margin-top: 20px;">
+                        <i class="fas fa-save"></i>
+                        حفظ الإعدادات
+                    </button>
+                    
+                    <div class="alert alert-success" id="settingsSuccess" style="margin-top: 20px;">
+                        تم حفظ الإعدادات بنجاح!
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- نموذج تسجيل الدخول -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>تسجيل الدخول</h2>
+                <button class="close-btn" id="closeLogin">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label>البريد الإلكتروني</label>
+                        <input type="email" id="loginEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label>كلمة المرور</label>
+                        <input type="password" id="loginPassword" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%; padding: 15px;">
+                        تسجيل الدخول
+                    </button>
+                    <div class="alert alert-error" id="loginError" style="margin-top: 20px;">
+                        البريد الإلكتروني أو كلمة المرور غير صحيحة
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- نموذج إنشاء حساب -->
+    <div class="modal" id="registerModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>إنشاء حساب جديد</h2>
+                <button class="close-btn" id="closeRegister">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="registerForm">
+                    <div class="form-group">
+                        <label>الاسم الكامل</label>
+                        <input type="text" id="registerName" required>
+                    </div>
+                    <div class="form-group">
+                        <label>البريد الإلكتروني</label>
+                        <input type="email" id="registerEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label>كلمة المرور</label>
+                        <input type="password" id="registerPassword" required>
+                    </div>
+                    <button type="submit" class="btn btn-success" style="width: 100%; padding: 15px;">
+                        إنشاء حساب
+                    </button>
+                    <div class="alert alert-success" id="registerSuccess" style="margin-top: 20px;">
+                        تم إنشاء الحساب بنجاح!
+                    </div>
+                    <div class="alert alert-error" id="registerError" style="margin-top: 20px;">
+                        حدث خطأ أثناء إنشاء الحساب
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- نموذج تأكيد الحذف -->
+    <div class="modal" id="confirmDeleteModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>تأكيد الحذف</h2>
+                <button class="close-btn" id="closeDelete">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p id="deleteMessage">هل أنت متأكد من حذف هذا العنصر؟</p>
+                <div style="display: flex; gap: 15px; margin-top: 30px;">
+                    <button class="btn btn-danger" id="confirmDeleteBtn">
+                        <i class="fas fa-trash"></i>
+                        نعم، احذف
+                    </button>
+                    <button class="btn btn-secondary" id="cancelDeleteBtn">
+                        <i class="fas fa-times"></i>
+                        إلغاء
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- التذييل -->
+    <footer id="about">
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <h3 style="color: white;">مسلم الشباني</h3>
+                    <p>مطور تطبيقات ومواقع ويب متخصص في إنشاء حلول برمجية مبتكرة.</p>
+                </div>
+                <div>
+                    <h3 style="color: white;">روابط سريعة</h3>
+                    <p><a href="#home" style="color: white; text-decoration: none;">الرئيسية</a></p>
+                    <p><a href="#apps" style="color: white; text-decoration: none;">التطبيقات</a></p>
+                    <p><a href="#about" style="color: white; text-decoration: none;">من نحن</a></p>
+                </div>
+                <div>
+                    <h3 style="color: white;">تواصل معنا</h3>
+                    <p><i class="fas fa-envelope"></i> info@example.com</p>
+                    <p><i class="fas fa-phone"></i> +966 123 456 789</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>جميع الحقوق محفوظة &copy; مسلم الشباني 2023</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // بيانات النظام
+        const SYSTEM_DATA = {
+            admin: {
+                name: "مسلم الشباني",
+                email: "admin@example.com",
+                password: "muslim1998",
+                role: "admin"
+            },
+            categories: [
+                { id: 1, name: "تطبيقات الأعمال", icon: "fas fa-briefcase", color: "#2E5BFF" },
+                { id: 2, name: "التعليم", icon: "fas fa-graduation-cap", color: "#8B3DFF" },
+                { id: 3, name: "الترفيه", icon: "fas fa-gamepad", color: "#FF6B8B" },
+                { id: 4, name: "الصحة واللياقة", icon: "fas fa-heartbeat", color: "#00C896" },
+                { id: 5, name: "الأدوات", icon: "fas fa-tools", color: "#FFA500" }
+            ],
+            apps: [
+                {
+                    id: 1,
+                    name: "مدير المهام الذكي",
+                    description: "تطبيق لإدارة المهام اليومية بذكاء اصطناعي متقدم",
+                    categoryId: 1,
+                    version: "2.1.4",
+                    size: "45 ميجابايت",
+                    downloads: 12500,
+                    rating: 4.8,
+                    link: "#",
+                    file: null,
+                    type: "link",
+                    status: "active",
+                    addedDate: "2023-10-15"
+                },
+                {
+                    id: 2,
+                    name: "تعلم اللغة الإنجليزية",
+                    description: "تطبيق تفاعلي لتعلم اللغة الإنجليزية بطرق حديثة",
+                    categoryId: 2,
+                    version: "1.5.2",
+                    size: "85 ميجابايت",
+                    downloads: 28700,
+                    rating: 4.9,
+                    link: "#",
+                    file: null,
+                    type: "link",
+                    status: "active",
+                    addedDate: "2023-09-20"
+                },
+                {
+                    id: 3,
+                    name: "محرر الفيديو الاحترافي",
+                    description: "تطبيق متكامل لتحرير الفيديو على الجوال",
+                    categoryId: 3,
+                    version: "3.0.1",
+                    size: "120 ميجابايت",
+                    downloads: 18900,
+                    rating: 4.7,
+                    link: "#",
+                    file: null,
+                    type: "link",
+                    status: "active",
+                    addedDate: "2023-10-01"
+                }
+            ],
+            users: [],
+            settings: {
+                siteName: "متجر تطبيقات مسلم الشباني",
+                siteDescription: "أفضل تطبيقات الجوال المبتكرة",
+                contactEmail: "info@example.com",
+                allowRegistrations: true,
+                enableReviews: true
+            }
+        };
+
+        // حالة النظام
+        let currentUser = null;
+        let currentCategory = "all";
+        let currentTab = "dashboard";
+        let uploadType = "link";
+        let deleteCallback = null;
+        let deleteItemId = null;
+        let deleteItemType = null;
+
+        // تهيئة النظام
+        document.addEventListener('DOMContentLoaded', () => {
+            loadSystemData();
+            initSystem();
+            setupEventListeners();
+            loadHomePage();
+        });
+
+        // تحميل البيانات
+        function loadSystemData() {
+            const saved = localStorage.getItem('systemData');
+            if (saved) {
+                const data = JSON.parse(saved);
+                Object.assign(SYSTEM_DATA, data);
+            }
+            
+            const user = localStorage.getItem('currentUser');
+            if (user) {
+                currentUser = JSON.parse(user);
+            }
+        }
+
+        // حفظ البيانات
+        function saveSystemData() {
+            localStorage.setItem('systemData', JSON.stringify(SYSTEM_DATA));
+            if (currentUser) {
+                localStorage.setItem('currentUser', JSON.stringify(currentUser));
+            }
+        }
+
+        // تهيئة النظام
+        function initSystem() {
+            updateUserUI();
+            populateCategorySelect();
+            loadAdminDashboard();
+            
+            if (currentUser && currentUser.email === SYSTEM_DATA.admin.email) {
+                showAdminPanel();
+            }
+        }
+
+        // تحديث واجهة المستخدم
+        function updateUserUI() {
+            const loginBtn = document.getElementById('loginBtn');
+            const registerBtn = document.getElementById('registerBtn');
+            const userInfo = document.getElementById('userInfo');
+            const userName = document.getElementById('userName');
+            const adminBtn = document.getElementById('adminBtn');
+            const logoutBtn = document.getElementById('logoutBtn');
+            const adminPanel = document.getElementById('adminPanel');
+
+            if (currentUser) {
+                loginBtn.classList.add('hidden');
+                registerBtn.classList.add('hidden');
+                userInfo.classList.remove('hidden');
+                userName.textContent = currentUser.name;
+                logoutBtn.classList.remove('hidden');
+
+                if (currentUser.email === SYSTEM_DATA.admin.email) {
+                    adminBtn.classList.remove('hidden');
+                    adminPanel.style.display = 'block';
+                } else {
+                    adminBtn.classList.add('hidden');
+                    adminPanel.style.display = 'none';
+                }
+            } else {
+                loginBtn.classList.remove('hidden');
+                registerBtn.classList.remove('hidden');
+                userInfo.classList.add('hidden');
+                adminBtn.classList.add('hidden');
+                logoutBtn.classList.add('hidden');
+                adminPanel.style.display = 'none';
+            }
+        }
+
+        // إعداد مستمعي الأحداث
+        function setupEventListeners() {
+            // أزرار التنقل
+            document.getElementById('loginBtn').addEventListener('click', () => showModal('loginModal'));
+            document.getElementById('registerBtn').addEventListener('click', () => showModal('registerModal'));
+            document.getElementById('logoutBtn').addEventListener('click', logout);
+            document.getElementById('adminBtn').addEventListener('click', () => {
+                document.getElementById('adminPanel').scrollIntoView({ behavior: 'smooth' });
+            });
+
+            // إغلاق النماذج
+            document.getElementById('closeLogin').addEventListener('click', () => hideModal('loginModal'));
+            document.getElementById('closeRegister').addEventListener('click', () => hideModal('registerModal'));
+            document.getElementById('closeDelete').addEventListener('click', () => hideModal('confirmDeleteModal'));
+            document.getElementById('cancelDeleteBtn').addEventListener('click', () => hideModal('confirmDeleteModal'));
+
+            // تسجيل الدخول
+            document.getElementById('loginForm').addEventListener('submit', (e) => {
+                e.preventDefault();
+                login();
+            });
+
+            // إنشاء حساب
+            document.getElementById('registerForm').addEventListener('submit', (e) => {
+                e.preventDefault();
+                register();
+            });
+
+            // خيارات الرفع
+            document.querySelectorAll('.upload-option').forEach(option => {
+                option.addEventListener('click', (e) => {
+                    uploadType = e.currentTarget.dataset.type;
+                    updateUploadUI();
+                });
+            });
+
+            // رفع ملف
+            document.getElementById('fileDropZone').addEventListener('click', () => {
+                document.getElementById('appFile').click();
+            });
+
+            // رفع تطبيق
+            document.getElementById('uploadAppForm').addEventListener('submit', (e) => {
+                e.preventDefault();
+                uploadApp();
+            });
+
+            // حفظ الإعدادات
+            document.getElementById('systemSettingsForm').addEventListener('submit', (e) => {
+                e.preventDefault();
+                saveSettings();
+            });
+
+            // البحث
+            document.getElementById('globalSearch').addEventListener('input', filterGlobalApps);
+
+            // تأكيد الحذف
+            document.getElementById('confirmDeleteBtn').addEventListener('click', confirmDelete);
+
+            // تحديث التطبيقات
+            document.getElementById('refreshApps').addEventListener('click', loadAdminApps);
+
+            // إضافة قسم جديد
+            document.getElementById('addCategoryBtn').addEventListener('click', addCategory);
+
+            // تبويبات لوحة التحكم
+            document.querySelectorAll('.admin-tab').forEach(tab => {
+                tab.addEventListener('click', (e) => {
+                    const tabId = e.target.dataset.tab;
+                    switchTab(tabId);
+                });
+            });
+
+            // إغلاق النماذج عند النقر خارجها
+            document.querySelectorAll('.modal').forEach(modal => {
+                modal.addEventListener('click', (e) => {
+                    if (e.target === modal) {
+                        hideModal(modal.id);
+                    }
+                });
+            });
+        }
+
+        // تحميل الصفحة الرئيسية
+        function loadHomePage() {
+            loadCategories();
+            loadApps();
+        }
+
+        // تحميل الأقسام
+        function loadCategories() {
+            const container = document.getElementById('categoriesContainer');
+            const filterContainer = document.getElementById('appsFilter');
+            
+            container.innerHTML = '';
+            filterContainer.innerHTML = '<button class="filter-btn active" data-category="all">جميع التطبيقات</button>';
+            
+            SYSTEM_DATA.categories.forEach(category => {
+                const count = SYSTEM_DATA.apps.filter(app => app.categoryId === category.id).length;
+                
+                // بطاقة القسم
+                const card = document.createElement('div');
+                card.className = 'category-card';
+                card.innerHTML = `
+                    <i class="${category.icon}"></i>
+                    <h3>${category.name}</h3>
+                    <p>${count} تطبيق</p>
+                `;
+                card.addEventListener('click', () => filterAppsByCategory(category.id));
+                container.appendChild(card);
+                
+                // زر التصفية
+                const filterBtn = document.createElement('button');
+                filterBtn.className = 'filter-btn';
+                filterBtn.textContent = category.name;
+                filterBtn.dataset.category = category.id;
+                filterBtn.addEventListener('click', () => filterAppsByCategory(category.id));
+                filterContainer.appendChild(filterBtn);
+            });
+        }
+
+        // تحميل التطبيقات
+        function loadApps(categoryId = null) {
+            const container = document.getElementById('appsContainer');
+            container.innerHTML = '';
+            
+            let apps = SYSTEM_DATA.apps;
+            if (categoryId && categoryId !== 'all') {
+                apps = apps.filter(app => app.categoryId === categoryId);
+            }
+            
+            apps.forEach(app => {
+                const category = SYSTEM_DATA.categories.find(c => c.id === app.categoryId);
+                const card = document.createElement('div');
+                card.className = 'app-card';
+                card.innerHTML = `
+                    <div class="app-header">
+                        <i class="${category ? category.icon : 'fas fa-mobile-alt'}"></i>
+                        <div class="app-badge">${app.size}</div>
+                    </div>
+                    <div class="app-body">
+                        <span class="app-category">${category ? category.name : 'غير مصنف'}</span>
+                        <h3 class="app-title">${app.name}</h3>
+                        <p class="app-description">${app.description}</p>
+                        <div class="app-meta">
+                            <span>الإصدار: ${app.version}</span>
+                            <span class="app-rating">
+                                <i class="fas fa-star"></i> ${app.rating}
+                            </span>
+                        </div>
+                        <button class="app-download-btn" data-id="${app.id}">
+                            <i class="fas fa-download"></i>
+                            تحميل التطبيق (${app.downloads.toLocaleString()})
+                        </button>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+            
+            // إضافة مستمعي الأحداث لأزرار التحميل
+            document.querySelectorAll('.app-download-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const appId = parseInt(e.currentTarget.dataset.id);
+                    downloadApp(appId);
+                });
+            });
+        }
+
+        // تصفية التطبيقات حسب القسم
+        function filterAppsByCategory(categoryId) {
+            currentCategory = categoryId;
+            
+            // تحديث أزرار التصفية
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.category == categoryId);
+            });
+            
+            loadApps(categoryId);
+        }
+
+        // بحث عام
+        function filterGlobalApps() {
+            const searchTerm = document.getElementById('globalSearch').value.toLowerCase();
+            
+            if (searchTerm.length < 2) {
+                loadApps(currentCategory);
+                return;
+            }
+            
+            const filteredApps = SYSTEM_DATA.apps.filter(app => 
+                app.name.toLowerCase().includes(searchTerm) || 
+                app.description.toLowerCase().includes(searchTerm)
+            );
+            
+            const container = document.getElementById('appsContainer');
+            container.innerHTML = '';
+            
+            filteredApps.forEach(app => {
+                const category = SYSTEM_DATA.categories.find(c => c.id === app.categoryId);
+                const card = document.createElement('div');
+                card.className = 'app-card';
+                card.innerHTML = `
+                    <div class="app-header">
+                        <i class="${category ? category.icon : 'fas fa-mobile-alt'}"></i>
+                        <div class="app-badge">${app.size}</div>
+                    </div>
+                    <div class="app-body">
+                        <span class="app-category">${category ? category.name : 'غير مصنف'}</span>
+                        <h3 class="app-title">${app.name}</h3>
+                        <p class="app-description">${app.description}</p>
+                        <div class="app-meta">
+                            <span>الإصدار: ${app.version}</span>
+                            <span class="app-rating">
+                                <i class="fas fa-star"></i> ${app.rating}
+                            </span>
+                        </div>
+                        <button class="app-download-btn" data-id="${app.id}">
+                            <i class="fas fa-download"></i>
+                            تحميل التطبيق
+                        </button>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+            
+            // إضافة مستمعي الأحداث
+            document.querySelectorAll('.app-download-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const appId = parseInt(e.currentTarget.dataset.id);
+                    downloadApp(appId);
+                });
+            });
+        }
+
+        // تسجيل الدخول
+        function login() {
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            const error = document.getElementById('loginError');
+
+            // التحقق من الإدمن
+            if (email === SYSTEM_DATA.admin.email && password === SYSTEM_DATA.admin.password) {
+                currentUser = {
+                    name: SYSTEM_DATA.admin.name,
+                    email: SYSTEM_DATA.admin.email,
+                    role: 'admin'
+                };
+                error.style.display = 'none';
+                hideModal('loginModal');
+                updateUserUI();
+                showAdminPanel();
+                saveSystemData();
+                return;
+            }
+
+            // التحقق من المستخدمين
+            const user = SYSTEM_DATA.users.find(u => u.email === email && u.password === password);
+            if (user) {
+                currentUser = user;
+                error.style.display = 'none';
+                hideModal('loginModal');
+                updateUserUI();
+                saveSystemData();
+                return;
+            }
+
+            // فشل تسجيل الدخول
+            error.style.display = 'block';
+        }
+
+        // إنشاء حساب
+        function register() {
+            const name = document.getElementById('registerName').value;
+            const email = document.getElementById('registerEmail').value;
+            const password = document.getElementById('registerPassword').value;
+            const success = document.getElementById('registerSuccess');
+            const error = document.getElementById('registerError');
+
+            // التحقق من السماح بالتسجيل
+            if (!SYSTEM_DATA.settings.allowRegistrations) {
+                error.textContent = 'التسجيل مغلق حالياً';
+                error.style.display = 'block';
+                success.style.display = 'none';
+                return;
+            }
+
+            // التحقق من صحة البريد الإلكتروني
+            if (!email.includes('@')) {
+                error.textContent = 'البريد الإلكتروني غير صالح';
+                error.style.display = 'block';
+                success.style.display = 'none';
+                return;
+            }
+
+            // التحقق من عدم وجود البريد مسبقاً
+            if (SYSTEM_DATA.users.some(u => u.email === email) || email === SYSTEM_DATA.admin.email) {
+                error.textContent = 'البريد الإلكتروني مسجل مسبقاً';
+                error.style.display = 'block';
+                success.style.display = 'none';
+                return;
+            }
+
+            // إنشاء المستخدم
+            const newUser = {
+                id: SYSTEM_DATA.users.length + 1,
+                name: name,
+                email: email,
+                password: password,
+                role: 'user',
+                status: 'active',
+                joinDate: new Date().toLocaleDateString('ar-SA')
+            };
+
+            SYSTEM_DATA.users.push(newUser);
+            saveSystemData();
+
+            success.style.display = 'block';
+            error.style.display = 'none';
+
+            setTimeout(() => {
+                hideModal('registerModal');
+                success.style.display = 'none';
+                document.getElementById('registerForm').reset();
+            }, 2000);
+        }
+
+        // تسجيل الخروج
+        function logout() {
+            if (confirm('هل تريد تسجيل الخروج؟')) {
+                currentUser = null;
+                localStorage.removeItem('currentUser');
+                updateUserUI();
+                hideAdminPanel();
+            }
+        }
+
+        // تحميل تطبيق
+        function downloadApp(appId) {
+            const app = SYSTEM_DATA.apps.find(a => a.id === appId);
+            if (!app) return;
+
+            app.downloads++;
+            saveSystemData();
+
+            if (app.type === 'link') {
+                window.open(app.link, '_blank');
+            } else {
+                alert(`جاري تحميل ${app.name}...`);
+            }
+
+            loadApps(currentCategory);
+            if (currentUser && currentUser.email === SYSTEM_DATA.admin.email) {
+                loadAdminDashboard();
+                loadAdminApps();
+            }
+        }
+
+        // تعبئة قائمة الأقسام
+        function populateCategorySelect() {
+            const select = document.getElementById('appCategory');
+            select.innerHTML = '<option value="">اختر القسم</option>';
+            
+            SYSTEM_DATA.categories.forEach(category => {
+                const option = document.createElement('option');
+                option.value = category.id;
+                option.textContent = category.name;
+                select.appendChild(option);
+            });
+        }
+
+        // تحديث واجهة الرفع
+        function updateUploadUI() {
+            document.querySelectorAll('.upload-option').forEach(option => {
+                option.classList.toggle('active', option.dataset.type === uploadType);
+            });
+
+            document.getElementById('linkSection').classList.toggle('hidden', uploadType !== 'link');
+            document.getElementById('fileSection').classList.toggle('hidden', uploadType !== 'file');
+        }
+
+        // رفع تطبيق جديد
+        function uploadApp() {
+            if (!currentUser || currentUser.email !== SYSTEM_DATA.admin.email) return;
+
+            const name = document.getElementById('appName').value;
+            const categoryId = parseInt(document.getElementById('appCategory').value);
+            const description = document.getElementById('appDescription').value;
+            const version = document.getElementById('appVersion').value;
+            const size = document.getElementById('appSize').value;
+            const success = document.getElementById('uploadSuccess');
+
+            let link = '#';
+            if (uploadType === 'link') {
+                link = document.getElementById('appLink').value;
+            }
+
+            // التحقق من البيانات
+            if (!name || !categoryId || !description || !version || !size) {
+                alert('يرجى ملء جميع الحقول المطلوبة');
+                return;
+            }
+
+            // إنشاء التطبيق الجديد
+            const newApp = {
+                id: SYSTEM_DATA.apps.length + 1,
+                name: name,
+                description: description,
+                categoryId: categoryId,
+                version: version,
+                size: size,
+                downloads: 0,
+                rating: 5.0,
+                link: link,
+                file: null,
+                type: uploadType,
+                status: 'active',
+                addedDate: new Date().toLocaleDateString('ar-SA')
+            };
+
+            SYSTEM_DATA.apps.push(newApp);
+            saveSystemData();
+
+            success.style.display = 'block';
+
+            // تحديث الواجهات
+            loadHomePage();
+            loadAdminDashboard();
+            loadAdminApps();
+
+            // إعادة تعيين النموذج
+            setTimeout(() => {
+                success.style.display = 'none';
+                document.getElementById('uploadAppForm').reset();
+            }, 3000);
+        }
+
+        // إضافة قسم جديد
+        function addCategory() {
+            const name = prompt('أدخل اسم القسم الجديد:');
+            if (!name) return;
+
+            const icon = prompt('أدخل أيقونة القسم (مثال: fas fa-icon):', 'fas fa-star');
+            const color = prompt('أدخل لون القسم (مثال: #2E5BFF):', '#2E5BFF');
+
+            const newCategory = {
+                id: SYSTEM_DATA.categories.length + 1,
+                name: name,
+                icon: icon,
+                color: color
+            };
+
+            SYSTEM_DATA.categories.push(newCategory);
+            saveSystemData();
+
+            loadHomePage();
+            populateCategorySelect();
+            loadAdminCategories();
+
+            alert('تم إضافة القسم بنجاح!');
+        }
+
+        // حذف عنصر
+        function deleteItem(type, id, name) {
+            deleteItemType = type;
+            deleteItemId = id;
+            
+            let message = '';
+            switch(type) {
+                case 'app':
+                    message = `هل أنت متأكد من حذف التطبيق "${name}"؟`;
+                    deleteCallback = deleteAppConfirmed;
+                    break;
+                case 'category':
+                    message = `هل أنت متأكد من حذف القسم "${name}"؟ سيتم حذف جميع التطبيقات المرتبطة به.`;
+                    deleteCallback = deleteCategoryConfirmed;
+                    break;
+                case 'user':
+                    message = `هل أنت متأكد من حذف المستخدم "${name}"؟`;
+                    deleteCallback = deleteUserConfirmed;
+                    break;
+            }
+            
+            document.getElementById('deleteMessage').textContent = message;
+            showModal('confirmDeleteModal');
+        }
+
+        // تأكيد الحذف
+        function confirmDelete() {
+            if (deleteCallback) {
+                deleteCallback();
+            }
+            hideModal('confirmDeleteModal');
+        }
+
+        // حذف تطبيق مؤكد
+        function deleteAppConfirmed() {
+            if (!deleteItemId) return;
+
+            SYSTEM_DATA.apps = SYSTEM_DATA.apps.filter(app => app.id !== deleteItemId);
+            saveSystemData();
+
+            loadHomePage();
+            loadAdminDashboard();
+            loadAdminApps();
+
+            alert('تم حذف التطبيق بنجاح!');
+        }
+
+        // حذف قسم مؤكد
+        function deleteCategoryConfirmed() {
+            if (!deleteItemId) return;
+
+            // حذف التطبيقات المرتبطة بالقسم
+            SYSTEM_DATA.apps = SYSTEM_DATA.apps.filter(app => app.categoryId !== deleteItemId);
+            
+            // حذف القسم
+            SYSTEM_DATA.categories = SYSTEM_DATA.categories.filter(cat => cat.id !== deleteItemId);
+            
+            saveSystemData();
+
+            loadHomePage();
+            populateCategorySelect();
+            loadAdminCategories();
+
+            alert('تم حذف القسم بنجاح!');
+        }
+
+        // حذف مستخدم مؤكد
+        function deleteUserConfirmed() {
+            if (!deleteItemId) return;
+
+            SYSTEM_DATA.users = SYSTEM_DATA.users.filter(user => user.id !== deleteItemId);
+            saveSystemData();
+
+            loadAdminUsers();
+
+            alert('تم حذف المستخدم بنجاح!');
+        }
+
+        // حفظ الإعدادات
+        function saveSettings() {
+            SYSTEM_DATA.settings.siteName = document.getElementById('siteName').value;
+            SYSTEM_DATA.settings.contactEmail = document.getElementById('contactEmail').value;
+            SYSTEM_DATA.settings.siteDescription = document.getElementById('siteDescription').value;
+            SYSTEM_DATA.settings.allowRegistrations = document.getElementById('allowRegistrations').checked;
+            SYSTEM_DATA.settings.enableReviews = document.getElementById('enableReviews').checked;
+
+            saveSystemData();
+
+            document.getElementById('settingsSuccess').style.display = 'block';
+            setTimeout(() => {
+                document.getElementById('settingsSuccess').style.display = 'none';
+            }, 3000);
+        }
+
+        // عرض لوحة التحكم
+        function showAdminPanel() {
+            document.getElementById('adminPanel').style.display = 'block';
+            loadAdminDashboard();
+            loadAdminApps();
+            loadAdminCategories();
+            loadAdminUsers();
+        }
+
+        // إخفاء لوحة التحكم
+        function hideAdminPanel() {
+            document.getElementById('adminPanel').style.display = 'none';
+        }
+
+        // تبديل التبويبات
+        function switchTab(tabId) {
+            currentTab = tabId;
+            
+            document.querySelectorAll('.admin-tab').forEach(tab => {
+                tab.classList.toggle('active', tab.dataset.tab === tabId);
+            });
+            
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.toggle('active', content.id === tabId + 'Tab');
+            });
+        }
+
+        // تحميل لوحة تحكم الإدمن
+        function loadAdminDashboard() {
+            const totalApps = SYSTEM_DATA.apps.length;
+            const totalDownloads = SYSTEM_DATA.apps.reduce((sum, app) => sum + app.downloads, 0);
+            const totalUsers = SYSTEM_DATA.users.length + 1; // +1 للإدمن
+            const avgRating = SYSTEM_DATA.apps.length > 0 
+                ? (SYSTEM_DATA.apps.reduce((sum, app) => sum + app.rating, 0) / SYSTEM_DATA.apps.length).toFixed(1)
+                : 0;
+
+            document.getElementById('adminTotalApps').textContent = totalApps;
+            document.getElementById('adminTotalDownloads').textContent = totalDownloads.toLocaleString();
+            document.getElementById('adminTotalUsers').textContent = totalUsers;
+            document.getElementById('adminAvgRating').textContent = avgRating;
+
+            loadAdminRecentApps();
+        }
+
+        // تحميل التطبيقات الحديثة في لوحة التحكم
+        function loadAdminRecentApps() {
+            const container = document.getElementById('adminRecentApps');
+            container.innerHTML = '';
+            
+            const recentApps = SYSTEM_DATA.apps
+                .sort((a, b) => new Date(b.addedDate) - new Date(a.addedDate))
+                .slice(0, 5);
+            
+            if (recentApps.length === 0) {
+                container.innerHTML = '<p style="text-align: center; color: #666;">لا توجد تطبيقات</p>';
+                return;
+            }
+            
+            recentApps.forEach(app => {
+                const category = SYSTEM_DATA.categories.find(c => c.id === app.categoryId);
+                const item = document.createElement('div');
+                item.style.padding = '10px';
+                item.style.borderBottom = '1px solid #eee';
+                item.style.display = 'flex';
+                item.style.justifyContent = 'space-between';
+                item.style.alignItems = 'center';
+                
+                item.innerHTML = `
+                    <div>
+                        <strong>${app.name}</strong>
+                        <br>
+                        <small style="color: #666;">${category ? category.name : 'غير مصنف'}</small>
+                    </div>
+                    <button class="action-btn delete-btn" title="حذف" onclick="deleteItem('app', ${app.id}, '${app.name}')">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                `;
+                container.appendChild(item);
+            });
+        }
+
+        // تحميل التطبيقات في لوحة التحكم
+        function loadAdminApps() {
+            const container = document.getElementById('adminAppsTable');
+            container.innerHTML = '';
+            
+            if (SYSTEM_DATA.apps.length === 0) {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td colspan="6" style="text-align: center; color: #666;">
+                        لا توجد تطبيقات
+                    </td>
+                `;
+                container.appendChild(row);
+                return;
+            }
+            
+            SYSTEM_DATA.apps.forEach(app => {
+                const category = SYSTEM_DATA.categories.find(c => c.id === app.categoryId);
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>
+                        <strong>${app.name}</strong>
+                        <br>
+                        <small style="color: #666;">${app.description.substring(0, 50)}...</small>
+                    </td>
+                    <td>${category ? category.name : 'غير مصنف'}</td>
+                    <td>${app.version}</td>
+                    <td>${app.downloads.toLocaleString()}</td>
+                    <td>
+                        <span class="status-badge ${app.status === 'active' ? 'status-active' : 'status-inactive'}">
+                            ${app.status === 'active' ? 'نشط' : 'غير نشط'}
+                        </span>
+                    </td>
+                    <td>
+                        <div class="action-buttons">
+                            <button class="action-btn delete-btn" title="حذف" onclick="deleteItem('app', ${app.id}, '${app.name}')">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    </td>
+                `;
+                container.appendChild(row);
+            });
+        }
+
+        // تحميل الأقسام في لوحة التحكم
+        function loadAdminCategories() {
+            const container = document.getElementById('adminCategoriesTable');
+            container.innerHTML = '';
+            
+            SYSTEM_DATA.categories.forEach(category => {
+                const count = SYSTEM_DATA.apps.filter(app => app.categoryId === category.id).length;
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>
+                        <i class="${category.icon}" style="margin-left: 10px;"></i>
+                        ${category.name}
+                    </td>
+                    <td><i class="${category.icon}"></i></td>
+                    <td>${count} تطبيق</td>
+                    <td>
+                        <div class="action-buttons">
+                            <button class="action-btn delete-btn" title="حذف" onclick="deleteItem('category', ${category.id}, '${category.name}')">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    </td>
+                `;
+                container.appendChild(row);
+            });
+        }
+
+        // تحميل المستخدمين في لوحة التحكم
+        function loadAdminUsers() {
+            const container = document.getElementById('adminUsersTable');
+            container.innerHTML = '';
+            
+            // عرض الإدمن
+            const adminRow = document.createElement('tr');
+            adminRow.innerHTML = `
+                <td>
+                    <strong>${SYSTEM_DATA.admin.name}</strong>
+                    <br>
+                    <small style="color: var(--success);">مدير النظام</small>
+                </td>
+                <td>${SYSTEM_DATA.admin.email}</td>
+                <td><span class="status-badge status-active">مدير</span></td>
+                <td>---</td>
+                <td><span class="status-badge status-active">نشط</span></td>
+                <td>---</td>
+            `;
+            container.appendChild(adminRow);
+            
+            // عرض المستخدمين
+            SYSTEM_DATA.users.forEach(user => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${user.name}</td>
+                    <td>${user.email}</td>
+                    <td><span class="status-badge status-active">مستخدم</span></td>
+                    <td>${user.joinDate}</td>
+                    <td>
+                        <span class="status-badge ${user.status === 'active' ? 'status-active' : 'status-inactive'}">
+                            ${user.status === 'active' ? 'نشط' : 'غير نشط'}
+                        </span>
+                    </td>
+                    <td>
+                        <div class="action-buttons">
+                            <button class="action-btn delete-btn" title="حذف" onclick="deleteItem('user', ${user.id}, '${user.name}')">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    </td>
+                `;
+                container.appendChild(row);
+            });
+        }
+
+        // عرض نافذة منبثقة
+        function showModal(modalId) {
+            document.getElementById(modalId).style.display = 'flex';
+        }
+
+        // إخفاء نافذة منبثقة
+        function hideModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+            if (modalId === 'confirmDeleteModal') {
+                deleteCallback = null;
+                deleteItemId = null;
+                deleteItemType = null;
+            }
+        }
+
+        // جعل الدوال متاحة بشكل عام
+        window.deleteItem = deleteItem;
+    </script>
+</body>
+</html>
